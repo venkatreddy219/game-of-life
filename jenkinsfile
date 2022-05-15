@@ -1,5 +1,5 @@
 Node("jdk1.8") {
-    stage("source coede") {
+    stage("sourceCode") {
         //cone the clode from repo//
         git branch: ' release1.0', url: 'https://github.com/spring-petclinic/spring-petclinic-microservices.git'
     }
@@ -8,14 +8,9 @@ Node("jdk1.8") {
         mvn 'clean package'
     }
 
-    stage("junit test resut") {
-        //test the result//
-        junit '**/surefire-report/*.xml'
-    }
-
-    stage("archive the package") {
-        //Archival of the package//
+    stage('Archiving and Test Results') {
+        junit '**/surefire-reports/*.xml'
         archiveArtifacts artifacts: '**/*.war', followSymlinks: false
-
     }
+
 }
