@@ -5,7 +5,7 @@ Node("jdk1.8") {
     }
     
     stage("Build the code") {
-        mvn clean package
+        mvn 'clean package'
     }
 
     stage("junit test resut") {
