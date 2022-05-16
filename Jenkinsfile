@@ -6,10 +6,6 @@ pipeline {
     triggers {
         cron('H * * * *')
     }
-    tool {
-        maven 'Apache Maven 3.8.5'
-    }
-
     stages {
         stage('Source code') {
             steps {
@@ -17,7 +13,7 @@ pipeline {
                 branch: 'sprint1_v1'
             }          
         }
-        stage ('Example'){
+        stage ('Example') {
             steps {
                 sh 'mvn --version'
             }
