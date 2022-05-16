@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Source code') {
             steps {
-                git url: 'https://github.com/venkatreddy219/spring-petclinic.git'
+                git url: 'https://github.com/venkatreddy219/spring-petclinic.git',
                 branch : 'sprint1_v1'
             }          
         }
