@@ -15,16 +15,13 @@ pipeline {
         }
         stage ('Build the code') {
             steps {
-                sh script: 'mvn clean package'
-            }
-            
+                sh: 'mvn package'
+            }            
         }
         stage ('Archive the artifacts') {
             steps {
                 archiveArtifacts artifacts: '**/*.war'
             }
-            
-    
         }
         stage ('Publish junit test results') {
             steps {
