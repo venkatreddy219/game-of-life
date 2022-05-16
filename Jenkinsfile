@@ -6,6 +6,10 @@ pipeline {
     triggers {
         cron('H * * * *')
     }
+    tool {
+        maven 'Apache Maven 3.8.5'
+    }
+
     stages {
         stage('Source code') {
             steps {
@@ -13,10 +17,15 @@ pipeline {
                 branch: 'sprint1_v1'
             }          
         }
+        stage ('Example'){
+            steps {
+                sh 'mvn --version'
+            }
+        }
         stage ('Build the code') {
             steps {
-                sh script 'mvn package'
-            }            
+                 sh 'mvn package'
+         }            
         }
         stage ('Archive the artifacts') {
             steps {
