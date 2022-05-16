@@ -10,12 +10,12 @@ pipeline {
         stage('Source code') {
             steps {
                 git url: 'https://github.com/venkatreddy219/spring-petclinic.git',
-                branch : 'sprint1_v1'
+                branch: 'sprint1_v1'
             }          
         }
         stage ('Build the code') {
             steps {
-                sh script : 'mvn clean packag'
+                sh script: 'mvn clean packag'
             }
             
         }
@@ -37,7 +37,7 @@ pipeline {
 post {
     success{
         //send the email//
-        echo "Build success full"
+        echo "Build success"
     }
     unsuccssfull {
         //send the email build failed//
