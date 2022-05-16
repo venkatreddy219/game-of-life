@@ -10,7 +10,7 @@ pipeline {
         stage('Source code') {
             steps {
                 git url: 'https://github.com/venkatreddy219/spring-petclinic.git'
-                branch : 'main'
+                branch : 'sprint1_v1'
             }          
         }
         stage ('Build the code') {
@@ -21,7 +21,7 @@ pipeline {
         }
         stage ('Archive the artifacts') {
             steps {
-                archiveArtifacts: '**/*.war'
+                archiveArtifacts artifacts: '**/*.war'
             }
             
     
