@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'jDK1.8'}
+    agent {label 'jDK1.8'}
     options {
         timeout(time: 1, unit: 'HOURS')
     }
