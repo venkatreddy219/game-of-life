@@ -1,19 +1,17 @@
 pipeline {
     agent { label 'JDK1.8'}
-
     options {
         timeout(time: 1, unit: 'HOURS')
     }
-
     triggers {
         cron('H * * * *')
-
     }
     stages {
         stage('Source code') {
-            steps
-            git url: 'https://github.com/venkatreddy219/spring-petclinic.git'
+            steps {
+                git url: 'https://github.com/venkatreddy219/spring-petclinic.git'
                 branch : 'main'
+            }          
         }
         stage ('Build the code') {
             steps {
