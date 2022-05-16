@@ -1,5 +1,5 @@
 pipeline {
-    agent none
+    agent {label 'kdk8'}
     options {
         timeout(time: 3, unit: 'HOURS')
     }
