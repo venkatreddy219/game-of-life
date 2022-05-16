@@ -15,7 +15,7 @@ pipeline {
         }
         stage ('Build the code') {
             steps {
-                sh script: 'mvn clean packag'
+                sh script: 'mvn packag'
             }
             
         }
