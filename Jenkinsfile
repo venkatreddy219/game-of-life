@@ -12,15 +12,10 @@ pipeline {
                 git url: 'https://github.com/venkatreddy219/spring-petclinic.git',
                 branch: 'sprint1_v1'
             }          
-        }
-        stage ('Example') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
+        }        }
         stage ('Build the code') {
             steps {
-                 sh 'mvn package'
+                 sh 'mvn clean package'
          }            
         }
         stage ('Archive the artifacts') {
