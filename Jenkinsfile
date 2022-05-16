@@ -1,5 +1,5 @@
 pipeline {
-    agent None
+    agent none
     options {
         timeout(time: 1, unit: 'HOURS')
     }
