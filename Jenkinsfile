@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage ('sourece code') {
             steps {
-                git url: 'https://github.com/venkatreddy219/game-of-life.git',
+                git url: "https://github.com/venkatreddy219/game-of-life.git" ,
                 branch 'main'
             }
         }
