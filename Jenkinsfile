@@ -11,7 +11,7 @@ pipeline {
         stage ('sourece code') {
             steps {
                 git url: 'https://github.com/venkatreddy219/game-of-life.git',
-                branch 'master'
+                branch 'main'
             }
         }
         stage ('build the code') {
