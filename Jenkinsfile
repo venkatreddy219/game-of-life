@@ -1,43 +1,42 @@
 pipeline {
-    agent {label 'kdk8'}
+    agent {label 'jdk1.8'}
     options {
-        timeout(time: 3, unit: 'HOURS')
+        timeout(time: 1, unit: 'HOURS') 
     }
-    triggers {
-        cron('H * * * *')
+    triggers {pollSCM('10 * * * 1-5')}
+    parameters {
+        choice (name: 'GOAL', choices: ['compile', 'package', 'clean'], description: 'Run on specific platform')
     }
     stages {
-        stage('Source code') {
+        stage ('sourece code') {
             steps {
-                git url: 'https://github.com/venkatreddy219/spring-petclinic.git',
-                branch: 'sprint1_v1'
-            }          
-        }        }
-        stage ('Build the code') {
-            steps {
-                 sh 'mvn clean package'
-         }            
-        }
-        stage ('Archive the artifacts') {
-            steps {
-                archiveArtifacts artifacts: '**/*.war'
+                git url: 'https://github.com/venkatreddy219/game-of-life.git',
+                branch 'master'
             }
         }
-        stage ('Publish junit test results') {
+        stage ('build the code') {
             steps {
-                junit testResults:'/target/surefire-reports/*.xml'
-            }            
+                sh script : "mvn ${params.GOAL}"
+            }
         }
-       
+        stage ('archive the code') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar, target/*.war'
+            }
+        }
+        stage ('junit test logs'){
+            steps {
+                junit testResults: 'target/surefire-reports/*.xml'
+            }
+        }
     }
+        
 }
 post {
-    success{
-        //send the email//
-        echo "Build success"
+    success {
+        echo "build comepleted success fully"
     }
-    unsuccssfull {
-        //send the email build failed//
-        echo "buid failed"
+    unsuccessful {
+        echo "Build faile"
     }
 }
